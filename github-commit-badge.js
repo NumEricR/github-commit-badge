@@ -42,7 +42,7 @@ function mainpage () {
     
         $.getJSON(urlData, function(data) {
 		    var myUser = badgeData.username;
-		    var myRepo = badgeData.repo;
+		    var myRepo = badgeData.repo.replace(/\./g, '-');
 		    var myEval = eval (data);
 		    var added = myEval.commit.added || [];
 		    var modified = myEval.commit.modified || [];
@@ -57,8 +57,8 @@ function mainpage () {
 		    myUserRepo.setAttribute("class","username");
 
 		    var myLink = document.createElement("a");
-		    myLink.setAttribute("href","http://github.com/" + myUser + "/" + myRepo);
-		    myLink.appendChild(document.createTextNode(myUser + "/" + myRepo));
+		    myLink.setAttribute("href","http://github.com/" + myUser + "/" + badgeData["repo"]);
+		    myLink.appendChild(document.createTextNode(myUser + "/" + badgeData["repo"]));
 		    myUserRepo.appendChild(myLink);
 
 		    // myDiffLine is the "foo committed xy on date" line 
@@ -69,7 +69,7 @@ function mainpage () {
 		    var myImage = document.createElement("img");
 		    myImage.setAttribute("src",GRAVATAR_URL_PREFIX + hex_md5(myEval.commit.committer.email) + "?s=" + GRAVATAR_IMG_SIZE);
 		    myImage.setAttribute("class","gravatar");
-		    myImage.setAttribute("alt",myUser + myRepo);
+		    myImage.setAttribute("alt",myUser);
 		    myDiffLine.appendChild(myImage);
 		    
 		    var myLink = document.createElement("a");
@@ -108,7 +108,7 @@ function mainpage () {
 		    // myFileList lists addded/remove/changed files, hidden at startup
 		    var myFileList = document.createElement("div");
 		    myFileList.setAttribute("class", "filelist");
-		    myFileList.setAttribute("id", myUser + myRepo);
+		    myFileList.setAttribute("id", myUser + '_' + myRepo);
 
 		    var myAddedFileList = document.createElement("div");
 		    myAddedFileList.innerHTML = "<span class='diffadded'>Added:</span>";
@@ -163,9 +163,9 @@ function mainpage () {
 		    $("#gcb-container")[0].appendChild(myBadge);
 
 		    // initially hiding the file-list and the behaviour of the Show-files button
-		    $("#" + myUser + myRepo).hide();	
-		    $("#showMoreLink" + myUser + myRepo).click(function () {
-			    $("#" + myUser + myRepo).toggle();
+		    $("#" + myUser + '_' + myRepo).hide();	
+		    $("#showMoreLink_" + myUser + '_' + myRepo).click(function () {
+			    $("#" + myUser + '_' + myRepo).toggle();
 			    if ($(this).text() == SHOW_FILES_TXT) {
 				    $(this).text(HIDE_FILES_TXT);
 			    } else {
