@@ -102,7 +102,7 @@ function mainpage () {
 		    
 		    // only show the "Show files" button if the commit actually added/removed/modified any files at all
 		    if (added.length > 0 || removed.length > 0 || modified.length > 0) {
-			    myDiffStat.innerHTML += "<a href='' class='showMoreLink' id='showMoreLink" + myUser + myRepo + "'>" + SHOW_FILES_TXT + "</a>";
+			    myDiffStat.innerHTML += "<a href='' class='showMoreLink' id='showMoreLink_" + myUser + '_' + myRepo + "'>" + SHOW_FILES_TXT + "</a>";
 		    };
 
 		    // myFileList lists addded/remove/changed files, hidden at startup
