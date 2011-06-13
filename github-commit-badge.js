@@ -81,6 +81,7 @@ function mainpage () {
 			myDate.appendChild(document.createTextNode(dateTime));
 		    
 			myDiffLine.appendChild(myLink);
+		    myDiffLine.appendChild(document.createTextNode(' to ' + branchName));
 			myDiffLine.appendChild(document.createTextNode(" about "));
 			myDiffLine.appendChild(myDate);
 		
