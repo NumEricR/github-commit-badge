@@ -99,78 +99,15 @@ function mainpage () {
 			    + removed.length + " <span class='diffremoved'>removed</span>, " 
 			    + modified.length + " <span class='diffchanged'>changed</span>) ";
 		    
-		    // only show the "Show files" button if the commit actually added/removed/modified any files at all
-		    if (added.length > 0 || removed.length > 0 || modified.length > 0) {
-			    myDiffStat.innerHTML += "<a href='' class='showMoreLink'>" + SHOW_FILES_TXT + "</a>";
-		    };
-
-		    // myFileList lists addded/remove/changed files, hidden at startup
-		    var myFileList = document.createElement("div");
-		    myFileList.setAttribute("class", "filelist");
-            
-		    var myAddedFileList = document.createElement("div");
-		    myAddedFileList.innerHTML = "<span class='diffadded'>Added:</span>";
-		    var myList = document.createElement("ul");
-		    var myFile;
-		    $.each(added, function(j, myAdded) {
-			    myFile = document.createElement("li");
-			    myFile.appendChild(document.createTextNode(myAdded.filename));
-			    myList.appendChild(myFile);
-		    });
-		    myAddedFileList.appendChild(myList);
-		    
-		    var myRemovedFileList = document.createElement("div");
-		    myRemovedFileList.innerHTML = "<span class='diffremoved'>Removed:</span>";
-		    myList = document.createElement("ul");
-		    $.each(removed, function(j, myRemoved) {
-			    myFile = document.createElement("li");
-			    myFile.appendChild(document.createTextNode(myRemoved.filename));
-			    myList.appendChild(myFile);
-		    });
-		    myRemovedFileList.appendChild(myList);
-		    
-		    var myModifiedFileList = document.createElement("div");
-		    myModifiedFileList.innerHTML = "<span class='diffchanged'>Changed:</span>";
-		    myList = document.createElement("ul");
-		    $.each(modified, function(j, myModified) {
-			    myFile = document.createElement("li");
-			    myFile.appendChild(document.createTextNode(myModified.filename));
-			    myList.appendChild(myFile);
-		    });
-		    myModifiedFileList.appendChild(myList);
-		    
-		    // add the 3 sections only if they have files in them
-		    if (added.length > 0) {
-			    myFileList.appendChild(myAddedFileList);
-		    };
-		    if (removed.length > 0) {
-			    myFileList.appendChild(myRemovedFileList);
-		    };
-		    if (modified.length > 0) {
-			    myFileList.appendChild(myModifiedFileList);
-		    };
-            
 		    // throw everything into our badge
 		    myBadge.appendChild(myUserRepo);
 		    myBadge.appendChild(myDiffLine);
 		    myBadge.appendChild(myCommitMessage);
 		    myBadge.appendChild(myDiffStat);
-		    myBadge.appendChild(myFileList);
             
 		    // and then the whole badge into the container
 		    $("#gcb-container")[0].appendChild(myBadge);
             
-		    // initially hiding the file-list and the behaviour of the Show-files button
-		    $("#" + myUser + '_' + myRepo + ' .filelist').hide();	
-		    $("#" + myUser + '_' + myRepo + ' .showMoreLink').click(function () {
-			    $("#" + myUser + '_' + myRepo + ' .filelist').toggle();
-			    if ($(this).text() == SHOW_FILES_TXT) {
-				    $(this).text(HIDE_FILES_TXT);
-			    } else {
-				    $(this).text(SHOW_FILES_TXT);
-			    };
-			    return false;
-		    });
 		    $(".text-date").humane_dates();	// works here (still, ugly!)
         });
     });
