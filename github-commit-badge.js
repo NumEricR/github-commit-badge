@@ -30,6 +30,7 @@ var SHOW_FILES_TXT = 'Show files';
 var HIDE_FILES_TXT = 'Hide files';
 var GRAVATAR_URL_PREFIX = 'http://www.gravatar.com/avatar/';
 var GRAVATAR_IMG_SIZE = 60;
+var GITHUB_URL = 'http://github.com';
 
 function mainpage () {
     $.each(Badges, function(i, badgeData) {
@@ -44,7 +45,6 @@ function mainpage () {
 		    var added = myEval.commit.added || [];
 		    var modified = myEval.commit.modified || [];
 		    var removed = myEval.commit.removed || [];
-            var githubUrl = 'http://github.com';
 		    
 		    // outline-class is used for the badge with the border
 		    var myBadge = document.createElement("div");
@@ -56,7 +56,7 @@ function mainpage () {
 		    myUserRepo.setAttribute("class", "username");
 
 			var myLink = document.createElement("a");
-			myLink.setAttribute("href", githubUrl + "/" + myUser + "/" + myRepo);
+			myLink.setAttribute("href", GITHUB_URL + "/" + myUser + "/" + myRepo);
 			myLink.appendChild(document.createTextNode(myUser + "/" + myRepo));
 			myUserRepo.appendChild(myLink);
 
@@ -65,7 +65,7 @@ function mainpage () {
 		    myDiffLine.setAttribute("class", "diffline");
 	        
 			myLink = document.createElement("a");
-			myLink.setAttribute("href", githubUrl + myEval.commit.url);
+			myLink.setAttribute("href", GITHUB_URL + myEval.commit.url);
 		    myLink.setAttribute("class", "badge");
 		    myLink.appendChild(document.createTextNode(" " + truncate(myEval.commit.id,COMMIT_DISPLAYED_ID_LENGTH,"")));
 			myDiffLine.appendChild(document.createTextNode(myEval.commit.committer.name + ' '));
