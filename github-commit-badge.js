@@ -25,7 +25,7 @@ function parseDate(dateTime) {	// thanks to lachlanhardy
 
 var DEFAULT_BRANCH_NAME = 'master';
 var COMMIT_MSG_MAX_LENGTH = 100;
-var COMMIT_DISPLAYED_ID_LENGTH = 10;
+var COMMIT_DISPLAYED_ID_LENGTH = 7;
 var SHOW_FILES_TXT = 'Show files';
 var HIDE_FILES_TXT = 'Hide files';
 var GRAVATAR_URL_PREFIX = 'http://www.gravatar.com/avatar/';
@@ -68,11 +68,15 @@ function mainpage () {
 			myLink.setAttribute("href", githubUrl + myEval.commit.url);
 		    myLink.setAttribute("class", "badge");
 		    myLink.appendChild(document.createTextNode(" " + truncate(myEval.commit.id,COMMIT_DISPLAYED_ID_LENGTH,"")));
-			myDiffLine.appendChild(document.createTextNode(myEval.commit.committer.name + " committed "));
+			myDiffLine.appendChild(document.createTextNode(myEval.commit.committer.name + ' '));
+			var spanAction = document.createElement("span");
+			spanAction.appendChild(document.createTextNode('committed'));
+			spanAction.setAttribute("class", "action");
+		    myDiffLine.appendChild(spanAction);
 		    
 			var myDate = document.createElement("span");
 			var dateTime = parseDate(myEval.commit.committed_date);
-		    myDate.setAttribute("class", "text-date");
+			myDate.setAttribute("class", 'text-date');
 			myDate.setAttribute("title", dateTime);
 			myDate.appendChild(document.createTextNode(dateTime));
 		    

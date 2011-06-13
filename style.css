@@ -5,22 +5,21 @@
 }
 
 #gcb-container .outline {
-	border: 1px solid #808080;
-	overflow: auto;
-	margin: 8px;
-	padding: 5px;
-	padding-top: 0;
-	background-color: #e5e5ff;
+	margin: 5px 0;
+    padding: 5px;
+    background: url("http://www.github.com/images/modules/pagehead/tab_background.gif?v2") repeat-x scroll left bottom #ededed;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 #gcb-container .username {
 	border: 0;
-	margin: 2px 0 0;
+	margin: 2px 0 5px;
 	height: 16px;
-	padding-left: 18px;
 	color: #ff0;
 	font-weight: bold;
-	background: url(img/public.png) no-repeat top left;
 }
 
 #gcb-container .diffline {
@@ -28,12 +27,10 @@
 }
 
 #gcb-container .commitmessage {
-	font-style: italic;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	padding-left: 20px;
+	margin: 5px 0;
 	min-height: 16px;
-	background: url(img/commit.png) no-repeat top left;
+	font-style: italic;
+	color: #444;
 }
 
 #gcb-container .diffstat {
@@ -42,17 +39,17 @@
 }
 
 #gcb-container .badge {
-	color: #3399ff;
+	color: #4183c4;
 	text-decoration: none;
 }
 
 #gcb-container .username a {
-	color: #0080ff;
+	color: #4183c4;
 	text-decoration: none;
 	font-size: 1.1em;
 }
 
-#gcb-container .text-date {
+#gcb-container .action {
 	background-color: #fff6a9;
 }
 
