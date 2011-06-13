@@ -79,18 +79,12 @@
 	list-style: square inside;
 	margin: 0;
 }
-	
-#gcb-container .showMoreLink {
-	color: #3399ff;
-	font-size: 1.1em;
-}
 
 #gcb-container a {
 	font-weight: bold;
 }
 
 #gcb-container .username a:hover,
-#gcb-container .badge:hover,
-#gcb-container .showMoreLink:hover {
+#gcb-container .badge:hover {
 	text-decoration: none;
 }
