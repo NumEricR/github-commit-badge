@@ -72,14 +72,6 @@
 	margin: 2px;
 }
 
-#gcb-container .filelist {
-	margin-top: 15px;
-}
-#gcb-container .filelist ul {
-	list-style: square inside;
-	margin: 0;
-}
-
 #gcb-container a {
 	font-weight: bold;
 }
