@@ -7,15 +7,14 @@
 function truncate(string, length, truncation) {
     length = length || 30;
     truncation = (typeof truncation == 'undefined') ? '...' : truncation;
-    return string.length > length ?
-      string.slice(0, length - truncation.length) + truncation : string;
+    return string.length > length ? string.slice(0, length - truncation.length) + truncation : string;
 };
 
 function parseDate(dateTime) {	// thanks to lachlanhardy
 	var timeZone = 1;	// TODO: This doesn't really work
 
-	dateTime = dateTime.substring(0,19) + "Z";
-	var theirTime = dateTime.substring(11,13);
+	dateTime = dateTime.substring(0, 19) + "Z";
+	var theirTime = dateTime.substring(11, 13);
 	var ourTime = parseInt(theirTime) + 7 + timeZone;
 	if (ourTime > 24) {
 		ourTime = ourTime - 24;
@@ -41,7 +40,7 @@ function mainpage () {
         $.getJSON(urlData, function(data) {
 		    var myUser = badgeData.username;
 		    var myRepo = badgeData.repo.replace(/\./g, '-');
-		    var myEval = eval (data);
+		    var myEval = eval(data);
 		    var added = myEval.commit.added || [];
 		    var modified = myEval.commit.modified || [];
 		    var removed = myEval.commit.removed || [];
@@ -49,15 +48,15 @@ function mainpage () {
 		    
 		    // outline-class is used for the badge with the border
 		    var myBadge = document.createElement("div");
-		    myBadge.setAttribute("class","outline");
+		    myBadge.setAttribute("class", "outline");
 		    myBadge.setAttribute("id", myUser + '_' + myRepo);
             
 		    // the username/repo
 		    var myUserRepo = document.createElement("div");
-		    myUserRepo.setAttribute("class","username");
+		    myUserRepo.setAttribute("class", "username");
 
 			var myLink = document.createElement("a");
-			myLink.setAttribute("href",githubUrl + "/" + myUser + "/" + myRepo);
+			myLink.setAttribute("href", githubUrl + "/" + myUser + "/" + myRepo);
 			myLink.appendChild(document.createTextNode(myUser + "/" + myRepo));
 			myUserRepo.appendChild(myLink);
 
@@ -67,13 +66,13 @@ function mainpage () {
 	        
 		    // the image-class uses float:left to sit left of the commit-message
 		    var myImage = document.createElement("img");
-		    myImage.setAttribute("src",GRAVATAR_URL_PREFIX + hex_md5(myEval.commit.committer.email) + "?s=" + GRAVATAR_IMG_SIZE);
-		    myImage.setAttribute("class","gravatar");
-		    myImage.setAttribute("alt",myUser);
+		    myImage.setAttribute("src", GRAVATAR_URL_PREFIX + hex_md5(myEval.commit.committer.email) + "?s=" + GRAVATAR_IMG_SIZE);
+		    myImage.setAttribute("class", "gravatar");
+		    myImage.setAttribute("alt", myUser);
 			myDiffLine.appendChild(myImage);
 		    
 			myLink = document.createElement("a");
-			myLink.setAttribute("href",myEval.commit.url);
+			myLink.setAttribute("href", myEval.commit.url);
 		    myLink.setAttribute("class", "badge");
 		    myLink.appendChild(document.createTextNode(" " + truncate(myEval.commit.id,COMMIT_DISPLAYED_ID_LENGTH,"")));
 			myDiffLine.appendChild(document.createTextNode(myEval.commit.committer.name + " committed "));
@@ -207,7 +206,7 @@ for (var i=0; i < myLibs.length; ++i) {
 // Write the stylesheet into the <head>
 myHead = document.getElementsByTagName("head")[0];
 myCSS = document.createElement("link");
-myCSS.setAttribute("rel","stylesheet");
-myCSS.setAttribute("type","text/css");
-myCSS.setAttribute("href",this.path + "style.css");
+myCSS.setAttribute("rel", "stylesheet");
+myCSS.setAttribute("type", "text/css");
+myCSS.setAttribute("href", this.path + "style.css");
 myHead.appendChild(myCSS);
