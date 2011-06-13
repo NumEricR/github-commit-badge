@@ -64,13 +64,6 @@ function mainpage () {
 			var myDiffLine = document.createElement("div");
 		    myDiffLine.setAttribute("class", "diffline");
 	        
-		    // the image-class uses float:left to sit left of the commit-message
-		    var myImage = document.createElement("img");
-		    myImage.setAttribute("src", GRAVATAR_URL_PREFIX + hex_md5(myEval.commit.committer.email) + "?s=" + GRAVATAR_IMG_SIZE);
-		    myImage.setAttribute("class", "gravatar");
-		    myImage.setAttribute("alt", myUser);
-			myDiffLine.appendChild(myImage);
-		    
 			myLink = document.createElement("a");
 			myLink.setAttribute("href", githubUrl + myEval.commit.url);
 		    myLink.setAttribute("class", "badge");

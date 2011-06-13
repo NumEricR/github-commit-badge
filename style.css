@@ -29,11 +29,11 @@
 
 #gcb-container .commitmessage {
 	font-style: italic;
-	padding-left: 90px;
 	margin-top: 5px;
 	margin-bottom: 5px;
+	padding-left: 20px;
 	min-height: 16px;
-	background: url(img/commit.png) no-repeat 70px top;
+	background: url(img/commit.png) no-repeat top left;
 }
 
 #gcb-container .diffstat {
@@ -64,12 +64,6 @@
 }
 #gcb-container .diffchanged {
 	color: #800080;
-}
-
-#gcb-container .gravatar {
-	border: 1px solid #fff6a9;
-	float: left;
-	margin: 2px;
 }
 
 #gcb-container a {
