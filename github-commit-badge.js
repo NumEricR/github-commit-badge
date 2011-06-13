@@ -72,7 +72,7 @@ function mainpage () {
 			myDiffLine.appendChild(myImage);
 		    
 			myLink = document.createElement("a");
-			myLink.setAttribute("href", myEval.commit.url);
+			myLink.setAttribute("href", githubUrl + myEval.commit.url);
 		    myLink.setAttribute("class", "badge");
 		    myLink.appendChild(document.createTextNode(" " + truncate(myEval.commit.id,COMMIT_DISPLAYED_ID_LENGTH,"")));
 			myDiffLine.appendChild(document.createTextNode(myEval.commit.committer.name + " committed "));
